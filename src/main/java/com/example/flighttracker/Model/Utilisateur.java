@@ -1,4 +1,4 @@
-package connexion;
+package com.example.flighttracker.Model;
 
 import javax.persistence.*;
 @Entity
@@ -13,6 +13,13 @@ public class Utilisateur {
 
     @Column(nullable = false, length = 30)
     private String password;
+    public Utilisateur(String username, String password){
+        this.username=username;
+        this.password=password;
+    }
+    public Utilisateur(){
+
+    }
 
     public Long getId() {
         return id;

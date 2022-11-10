@@ -1,5 +1,7 @@
 package connexion;
 
+import com.example.flighttracker.Repo.RepertoireUtilisateur;
+import com.example.flighttracker.Model.Utilisateur;
 import org.testng.annotations.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
