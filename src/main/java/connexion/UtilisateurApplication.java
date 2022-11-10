@@ -8,6 +8,6 @@ public class UtilisateurApplication {
     public static void main(String[] args) {
 
         UtilisateurService service=new UtilisateurService() ;
-        service.SaveUtilisateur();
+        service.SaveUtilisateur("Kevin","camelesbrise");
     }
 }

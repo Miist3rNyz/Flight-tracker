@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class UtilisateurService {
     @Autowired
-    private RepertoireUtilisateur repo;
-    public void SaveUtilisateur(){
+    private RepertoireUtilisateur repo ;
+    public void SaveUtilisateur(String username,String password){
         Utilisateur user = new Utilisateur();
-        user.setUsername("Kevin");
-        user.setPassword("Samueltahack");
+        user.setUsername(username);
+        user.setPassword(password);
         repo.save(user);
 
     }
