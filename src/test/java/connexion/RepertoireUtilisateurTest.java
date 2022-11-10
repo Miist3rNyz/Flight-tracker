@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
-public class unitTest {
+public class RepertoireUtilisateurTest {
 
     @Autowired
     private TestEntityManager entityManager;
@@ -34,11 +34,7 @@ public class unitTest {
         assertThat(user.getUsername()).isEqualTo(existUser.getUsername());
 
     }
-    // test methods go below
-    public static void main(String[] args) {
-            unitTest test = new unitTest();
-            test.testCreateUser();
-        };
+
 };
 
 
