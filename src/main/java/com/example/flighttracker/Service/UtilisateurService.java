@@ -16,4 +16,9 @@ public class UtilisateurService {
         repo.save(user);
 
     }
+    public void RemoveUtilisateur(Utilisateur user){
+
+    }
+    public void CheckLogin(Utilisateur user){
+    }
 }
