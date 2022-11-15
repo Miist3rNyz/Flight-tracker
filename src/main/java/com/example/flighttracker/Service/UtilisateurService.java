@@ -16,8 +16,9 @@ public class UtilisateurService {
         repo.save(user);
 
     }
-    public void RemoveUtilisateur(Utilisateur user){
-    repo.delete(user);
+
+    public void deleteById(Long id){
+        repo.deleteById(id);
     }
     public boolean CheckLogin(String username, String password){
         for (Utilisateur utilisateur : repo.findAll()) {
