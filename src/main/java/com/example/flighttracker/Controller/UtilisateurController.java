@@ -12,8 +12,7 @@ public class UtilisateurController {
     @PostMapping("/user")
     public int test(@RequestParam("username")String username, @RequestParam("password")String password){
         service.SaveUtilisateur(username,password);
-        Utilisateur utilisateur = new Utilisateur(username,password);
-        service.RemoveUtilisateur(utilisateur);
+
         return 0;
     }
     @DeleteMapping("/user/{id}")
