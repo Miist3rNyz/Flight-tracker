@@ -17,8 +17,15 @@ public class UtilisateurService {
 
     }
     public void RemoveUtilisateur(Utilisateur user){
-
+    repo.delete(user);
     }
-    public void CheckLogin(Utilisateur user){
+    public boolean CheckLogin(String username, String password){
+        for (Utilisateur utilisateur : repo.findAll()) {
+            if(utilisateur.getUsername()==username && utilisateur.getPassword()==password){
+                return true;
+            }
+        }
+        return false;
+
     }
 }
