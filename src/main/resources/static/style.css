@@ -33,13 +33,6 @@ input{
     background-color: white;
 }
 
-nav
-{
-    float: left;
-    width: 150px;
-    border: 1px solid black;
-}
-
 section
 {
     margin-left: 20%;
@@ -47,13 +40,13 @@ section
     border: 2px solid white;
 }
 
-
+/*
 nav{
     float: left;
     width: 15%;
     border: 2px solid white;
 }
-
+*/
 footer{
     margin-left:20%;
     margin-right:20%;

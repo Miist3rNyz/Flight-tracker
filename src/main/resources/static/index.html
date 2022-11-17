@@ -2,29 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <title>Consultation des vols en cours</title>
 </head>
 <body>
-<h1>Bienvenue sur notre site de consultation de vol</h1>
+    <h1 class="title">Bienvenue sur notre site de consultation de vol</h1>
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/static">
+                <img src="images/logo.png" width="112" height="28">
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/static">
+                    Accueil
+                </a>
+
+                <a class="navbar-item">
+                    Documentation
+                </a>
+                <a class="navbar-item">
+                    Consulter les vols
+                </a>
 
 
+            </div>
 
-<nav>
-    <h2> Connexion : </br></h2>
-    <input type="text" name="username"></Br>
-    <input type="text" name="password">
-</nav>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-primary" href="../templates/Inscription.html"> <!-- ne fonctionne pas je ne sais pas pourquoi-->
+                            <strong>S'inscrire</strong>
+                        </a>
+                        <a class="button is-light" href="../templates/Connexion.html"><!-- ne fonctionne pas je ne sais pas pourquoi-->
+                            Se connecter
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+<!--
+    <section>
+        <input id="searchbar"  type="text" name="search">
 
-<section>
-    <input id="searchbar"  type="text" name="search">
-    <!-- Là où on va mettre le plus important -->
-    <p1></Br> Ceci est un texte à la con pour tester des trucs </Br>Oui</Br>Oui</Br>Oui</p1>
-</section>
+        <p1></Br> Ceci est un texte à la con pour tester des trucs </Br>Oui</Br>Oui</Br>Oui</p1>
+    </section>
 
-<footer>
-    <img src="images/UL.png" width=20% height=20% id="UL">
-    <!--mettre le logo de polytech et de l'UL-->
-</footer>
+    <footer>
+        <img src="images/UL.png" width=20% height=20% id="UL">
+
+    </footer> -->
 </body>
 </html>
