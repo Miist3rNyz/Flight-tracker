@@ -3,14 +3,14 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>test</title>
 </head>
 <body>
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="/static">
-            <img src="" width="112" height="28">
+            <img src="../static/images/logo.png" width="112" height="28">
         </a>
 
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -22,7 +22,7 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-            <a class="navbar-item" href="/static">
+            <a class="navbar-item" href="../static/index.html">
                 Accueil
             </a>
 
@@ -39,10 +39,10 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-primary" href="http://localhost:8080/Inscription"> <!-- ne fonctionne pas je ne sais pas pourquoi-->
+                    <a class="button is-primary" href="../templates/Inscription.html"> <!-- ne fonctionne pas je ne sais pas pourquoi-->
                         <strong>S'inscrire</strong>
                     </a>
-                    <a class="button is-light" href="http://localhost:8080/Connexion"><!-- ne fonctionne pas je ne sais pas pourquoi-->
+                    <a class="button is-light" href="../templates/Connexion.html"><!-- ne fonctionne pas je ne sais pas pourquoi-->
                         Se connecter
                     </a>
                 </div>
@@ -50,5 +50,23 @@
         </div>
     </div>
 </nav>
+
+<h1 class="subtitle"> Page d'inscription : </h1>
+
+<div class="block">
+
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <h1 class="title">Identifiant</h1>
+                <input class="input" type="text" placeholder="Identifiant">
+            </div>
+            <div class="column">
+                <h1 class="title">Mot de passe</h1>
+                <input class="input" type="password" placeholder="Mot de passe">
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
