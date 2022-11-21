@@ -51,6 +51,23 @@
             </div>
         </div>
     </nav>
+    <div class="block">
+        <form method="post" th:action="@{/user}" th:object="${Utilisateur}>"
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <h1 class="title">Identifiant</h1>
+                    <input class="input" type="text" th:field="*{username}" placeholder="Identifiant" id="usernameInput">
+                </div>
+                <div class="column">
+                    <h1 class="title">Mot de passe</h1>
+                    <input class="input" type="password" th:field="*{password}" placeholder="Mot de passe" id="passwordInput">
+                </div>
+                <button type="submit" class="btn btn-primary">Créer</button>
+                </form>
+            </div>
+        </div>
+    </div>
 <!--
     <section>
         <input id="searchbar"  type="text" name="search">
@@ -62,5 +79,7 @@
         <img src="images/UL.png" width=20% height=20% id="UL">
 
     </footer> -->
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </body>
 </html>
