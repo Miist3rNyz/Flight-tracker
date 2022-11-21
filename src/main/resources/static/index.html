@@ -46,7 +46,7 @@
                             <strong>S'inscrire</strong>
                         </a>
 
-                        <a class="button is-light" href="../templates/Connexion.html">
+                        <a class="button is-light" href="../Login">
                             Se connecter
                         </a>
                     </div>
@@ -54,23 +54,7 @@
             </div>
         </div>
     </nav>
-    <div class="block">
-        <form method="post" th:action="@{/user}" th:object="${Utilisateur}>"
-        <div class="container">
-            <div class="columns">
-                <div class="column">
-                    <h1 class="title">Identifiant</h1>
-                    <input class="input" type="text" placeholder="Identifiant" id="usernameInput">
-                </div>
-                <div class="column">
-                    <h1 class="title">Mot de passe</h1>
-                    <input class="input" type="password" th:field="*{password}" placeholder="Mot de passe" id="passwordInput">
-                </div>
-                <button type="submit" class="btn btn-primary">Créer</button>
-                </form>
-            </div>
-        </div>
-    </div>
+
 <!--
     <section>
         <input id="searchbar"  type="text" name="search">

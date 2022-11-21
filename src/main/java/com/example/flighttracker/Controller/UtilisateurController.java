@@ -20,14 +20,7 @@ public class UtilisateurController {
         service.deleteById(id);
 
     }
-    @PostMapping("/Login")
-       public int CheckLogin(@ModelAttribute Utilisateur utilisateur) {
-        if (service.CheckLogin(utilisateur.getUsername(), utilisateur.getPassword())==true) {
-            return 1;
-        } else {
-            return 0;
-        }
-    }
+
 
 
 }
