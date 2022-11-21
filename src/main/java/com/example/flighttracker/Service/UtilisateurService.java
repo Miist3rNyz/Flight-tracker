@@ -22,7 +22,7 @@ public class UtilisateurService {
     }
     public boolean CheckLogin(String username, String password){
         for (Utilisateur utilisateur : repo.findAll()) {
-            if(utilisateur.getUsername()==username && utilisateur.getPassword()==password){
+            if(utilisateur.getUsername().equals(username) && utilisateur.getPassword().equals(password)){
                 return true;
             }
         }
