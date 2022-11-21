@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr"
-      xmlns:th="http://www.thymeleaf.org">>
+      xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 <head>
     <meta charset="UTF-8">
@@ -40,9 +40,13 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-primary" href="../templates/Inscription.html"> <!-- ne fonctionne pas je ne sais pas pourquoi-->
+
+                    <a class="button is-primary" > <!-- ne fonctionne pas je ne sais pas pourquoi-->
                         <strong>S'inscrire</strong>
+
                     </a>
+
+
                     <a class="button is-light" href="../templates/Connexion.html"><!-- ne fonctionne pas je ne sais pas pourquoi-->
                         Se connecter
                     </a>
@@ -55,16 +59,17 @@
 <h1 class="subtitle"> Page d'inscription : </h1>
 
 <div class="block">
-    <form method="post" th:action="@{/user}" th:object="${Utilisateur}>"
-    <div class="container">
+    <form method="POST" >
+        <div class="container">
         <div class="columns">
             <div class="column">
-                <h1 class="title">Identifiant</h1>
-                <input class="input" type="text" th:field="*{username}" placeholder="Identifiant" id="usernameInput">
+
+                <p>Identifiant :<input type="text" placeholder="Identifiant" name="username"></p>
+
             </div>
             <div class="column">
-                <h1 class="title">Mot de passe</h1>
-                <input class="input" type="password" th:field="*{password}" placeholder="Mot de passe" id="passwordInput">
+
+                <p>Mot de passe :<input type="text" placeholder="Mot de passe" name="password"></p>
             </div>
             <button type="submit" class="btn btn-primary">Créer</button>
             </form>
