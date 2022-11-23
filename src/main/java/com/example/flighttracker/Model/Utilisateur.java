@@ -1,6 +1,7 @@
 package com.example.flighttracker.Model;
 
 import javax.persistence.*;
+
 @Entity
 @Table(name = "users")
 public class Utilisateur {
@@ -41,11 +42,5 @@ public class Utilisateur {
     public void setUsername(String username) {
         this.username = username;
     }
-
-
-
-
-
-
 
 }

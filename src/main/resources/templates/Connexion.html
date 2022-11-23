@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" xmlns="http://www.w3.org/1999/html">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 <head>
     <meta charset="UTF-8">
@@ -50,13 +50,15 @@
         </div>
     </div>
 </nav>
+<p><span>Bienvenue:</span> <div th:text="${session.username}"></div> !</p>
+
 
 <h1 class="subtitle"> Page de connexion : </h1>
 
 <div class="block">
 
     <div class="container">
-        <form method="POST">>
+        <form method="POST">
         <div class="columns">
             <div class="column">
                 <h1 class="title">Identifiant</h1>

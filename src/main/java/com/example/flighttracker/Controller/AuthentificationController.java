@@ -4,8 +4,9 @@ import com.example.flighttracker.Model.Utilisateur;
 import com.example.flighttracker.Service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -31,19 +32,25 @@ public class AuthentificationController {
     public String Login(){
         return"Connexion";
     }
-     @PostMapping("/Login")
-    public ModelAndView CheckLogin(@RequestParam("username")String username, @RequestParam("password")String password,HttpSession httpSession) {
+    @PostMapping("/Login")
+    public ModelAndView CheckLogin(@RequestParam("username")String username, @RequestParam("password")String password, HttpSession httpSession) {
         if (service.CheckLogin(username, password)==true) {
             Utilisateur utilisateur = new Utilisateur(username,password);
             httpSession.setAttribute("username",utilisateur.getUsername());
-           /* httpSession.setMaxInactiveInterval(120);                //temps en seconde
-            if(httpSession.getMaxInactiveInterval()==120){
 
-            }*/
+
 
         } else {        // il faut faire une redirection vers une page qui redemande le mot de passe ou le username en fonction de ce qui est faux.
             return new ModelAndView("redirect:test");
         }
         return new ModelAndView("redirect:/");
+    }
+    @GetMapping("/profile")
+    public String test(HttpSession httpSession){
+        if(httpSession.getAttribute("username") !=null){
+            return "profile";
+        }
+        return "index";
+
     }
 }

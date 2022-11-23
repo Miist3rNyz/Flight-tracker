@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:form="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en"/>
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
@@ -9,9 +9,10 @@
 <body>
     <h1 class="title">Bienvenue sur notre site de consultation de vol</h1>
 
+
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="/static">
+            <a class="navbar-item" href="/">
                 <img src="images/logo.png" width="112" height="28">
             </a>
 
@@ -54,7 +55,7 @@
             </div>
         </div>
     </nav>
-    <span th:text=${session.username}"></span>
+
 
 
 <!--

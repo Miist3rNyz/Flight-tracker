@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr"
-      xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">>
+      xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 <head>
     <meta charset="UTF-8">
@@ -56,7 +56,7 @@
     </div>
 </nav>
 
-<h1 class="subtitle"> Page d'inscription : </h1>
+<h1 class="subtitle"> Bienvenue sur la page d'inscription veuillez entrer les différentes informations ci dessous afin de vous enregistrer sur notre site :</h1>
 
 <div class="block">
     <form method="POST" >
@@ -64,12 +64,14 @@
         <div class="columns">
             <div class="column">
 
-                <p>Identifiant :<input type="text" placeholder="Identifiant" name="username"></p>
+                <p>Identifiant :</p>
+                <input type="text" placeholder="Identifiant" name="username">
 
             </div>
             <div class="column">
 
-                <p>Mot de passe :<input type="text" placeholder="Mot de passe" name="password"></p>
+                <p>Mot de passe :</p>
+                <input type="password" placeholder="Mot de passe" name="password">
             </div>
             <button type="submit" class="btn btn-primary">Créer</button>
             </form>
