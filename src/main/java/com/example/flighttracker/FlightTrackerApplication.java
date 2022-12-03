@@ -20,6 +20,7 @@ public class FlightTrackerApplication {
     public static void main(String[] args) {
         SpringApplication.run(FlightTrackerApplication.class, args);
     }
+    /*
     @Bean
     CommandLineRunner runner(VolService volService) {
         return args -> {
@@ -36,6 +37,6 @@ public class FlightTrackerApplication {
                 System.out.println("Unable to save users: " + e.getMessage());
             }
         };
-    }
+    }*/
 
 }
