@@ -8,11 +8,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.sun.source.doctree.SystemPropertyTree;
 import org.springframework.util.SystemPropertyUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -23,7 +21,7 @@ import java.nio.file.Paths;
 import java.util.Collections;
 
 @RestController
-@RequestMapping("/vol")
+
 public class ApiController {
 
     private String result;
@@ -32,8 +30,12 @@ public class ApiController {
     public ApiController(VolService volService){
         this.volService=volService;
     }
+   /* @GetMapping("/vol")
+    public String Vol(){
+        return "Vol";
+    }*/
     @GetMapping( "/vol")
-    private void getVol() throws IOException {
+    private ModelAndView getVol() {
         String uri = "https://opensky-network.org/api/states/all";
         RestTemplate restTemplate = new RestTemplate();
 
@@ -69,7 +71,7 @@ public class ApiController {
         for(int i = 0 ;i< test.length; i++){
             resultat = test[i].split(",");
             resultat[16]=resultat[16].substring(0,resultat[16].length()-1);
-            System.out.println(resultat[16]);
+
             icao24[i]=resultat[0];
             callsign[i]=resultat[1];
             origin_Country[i]=resultat[2];
@@ -93,7 +95,11 @@ public class ApiController {
 
 
         }
-
+        for(int i=0; i<position_source.length;i++){
+            Vol vol = new Vol(icao24[i],callsign[i],origin_Country[i],time_position[i],last_contact[i],longitude[i],lattitude[i],baro_altitude[i],on_ground[i],velocity[i],true_track[i],vertical_rate[i],sensors[i],geo_altitude[i],sqwuak[i],spi[i],position_source[i]);
+            volService.save(vol);
+        }
+        return new ModelAndView( "redirect:/");
     }
     @GetMapping("/list")
     private Iterable<Vol> list(){

@@ -6,7 +6,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Data
-@AllArgsConstructor
+
 @Entity
 @Table(name = "vol")
 public class Vol {
@@ -16,42 +16,60 @@ public class Vol {
     private String icao24;
     private String callsign;
     private String origin_Country;
-    private int time_position;
-    private int last_contact;
-    private float longitude;
-    private float lattitude;
-    private float baro_altitude;
-    private boolean on_ground;
-    private float velocity;
-    private float true_track;
-    private float vertical_rate;
-   // private int[] sensors;
-    private float geo_altitude;
+    private String time_position;
+    private String last_contact;
+    private String longitude;
+    private String lattitude;
+    private String baro_altitude;
+    private String on_ground;
+    private String velocity;
+    private String true_track;
+    private String vertical_rate;
+    private String sensors;
+    private String geo_altitude;
     private String sqwuak;
-    private boolean spi;
-    private int position_source;
+    private String spi;
+    private String position_source;
 
+
+    public Vol(String icao24,String callsign, String origin_Country, String time_position, String last_contact, String longitude, String lattitude,String baro_altitude, String on_ground, String velocity, String true_track,String vertical_rate, String sensors, String geo_altitude, String sqwuak, String spi, String position_source) {
+        this.icao24 = icao24;
+        this.callsign=callsign;
+        this.origin_Country=origin_Country;
+        this.time_position=time_position;
+        this.last_contact=last_contact;
+        this.longitude=longitude;
+        this.lattitude=lattitude;
+        this.baro_altitude=baro_altitude;
+        this.on_ground=on_ground;
+        this.velocity=velocity;
+        this.true_track=true_track;
+        this.vertical_rate=vertical_rate;
+        this.sensors=sensors;
+        this.geo_altitude=geo_altitude;
+        this.sqwuak=sqwuak;
+        this.spi=spi;
+        this.position_source=position_source;
+    }
 
     public Vol() {
 
     }
 
 
-
-
-    public int getPosition_source() {
+    public String getPosition_source() {
         return position_source;
     }
 
-    public void setPosition_source(int position_source) {
+    public void setPosition_source(String position_source) {
         this.position_source = position_source;
     }
 
-    public boolean isSpi() {
+    public String getSpi() {
         return spi;
     }
 
-    public void setSpi(boolean spi) {
+    public void setSpi(String spi) {
         this.spi = spi;
     }
 
@@ -63,91 +81,91 @@ public class Vol {
         this.sqwuak = sqwuak;
     }
 
-    public float getGeo_altitude() {
+    public String getGeo_altitude() {
         return geo_altitude;
     }
 
-    public void setGeo_altitude(float geo_altitude) {
+    public void setGeo_altitude(String geo_altitude) {
         this.geo_altitude = geo_altitude;
     }
 
-   /* public int[] getSensors() {
+    public String getSensors() {
         return sensors;
     }
 
-    public void setSensors(int[] sensors) {
+    public void setSensors(String sensors) {
         this.sensors = sensors;
-    }*/
+    }
 
-    public float getVertical_rate() {
+    public String getVertical_rate() {
         return vertical_rate;
     }
 
-    public void setVertical_rate(float vertical_rate) {
+    public void setVertical_rate(String vertical_rate) {
         this.vertical_rate = vertical_rate;
     }
 
-    public float getTrue_track() {
+    public String getTrue_track() {
         return true_track;
     }
 
-    public void setTrue_track(float true_track) {
+    public void setTrue_track(String true_track) {
         this.true_track = true_track;
     }
 
-    public float getVelocity() {
+    public String getVelocity() {
         return velocity;
     }
 
-    public void setVelocity(float velocity) {
+    public void setVelocity(String velocity) {
         this.velocity = velocity;
     }
 
-    public boolean isOn_ground() {
+    public String getOn_ground() {
         return on_ground;
     }
 
-    public void setOn_ground(boolean on_ground) {
+    public void setOn_ground(String on_ground) {
         this.on_ground = on_ground;
     }
 
-    public float getBaro_altitude() {
+    public String getBaro_altitude() {
         return baro_altitude;
     }
 
-    public void setBaro_altitude(float baro_altitude) {
+    public void setBaro_altitude(String baro_altitude) {
         this.baro_altitude = baro_altitude;
     }
 
-    public float getLattitude() {
+    public String getLattitude() {
         return lattitude;
     }
 
-    public void setLattitude(float lattitude) {
+    public void setLattitude(String lattitude) {
         this.lattitude = lattitude;
     }
 
-    public float getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(float longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 
-    public int getLast_contact() {
+    public String getLast_contact() {
         return last_contact;
     }
 
-    public void setLast_contact(int last_contact) {
+    public void setLast_contact(String last_contact) {
         this.last_contact = last_contact;
     }
 
-    public int getTime_position() {
+    public String getTime_position() {
         return time_position;
     }
 
-    public void setTime_position(int time_position) {
+    public void setTime_position(String time_position) {
         this.time_position = time_position;
     }
 
@@ -174,6 +192,4 @@ public class Vol {
     public void setIcao24(String icao24) {
         this.icao24 = icao24;
     }
-
-
 }
