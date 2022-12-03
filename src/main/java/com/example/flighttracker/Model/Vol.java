@@ -30,20 +30,14 @@ public class Vol {
     private String sqwuak;
     private boolean spi;
     private int position_source;
-    private int category;
+
 
     public Vol() {
 
     }
 
 
-    public int getCategory() {
-        return category;
-    }
 
-    public void setCategory(int category) {
-        this.category = category;
-    }
 
     public int getPosition_source() {
         return position_source;
