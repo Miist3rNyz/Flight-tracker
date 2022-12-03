@@ -38,16 +38,15 @@ public class ApiController {
    /*     PrintWriter writer = new PrintWriter("vol.json", "UTF-8");
 
         */result= restTemplate.getForObject(uri, String.class);
-        String[] test=result.split("\\[");
-        String[] resultat = new String[test.length];
-        for(int i = 2; i<test.length;i++){
-            resultat= test[i].split("],");
-        }
-        for(int i = 0 ; i<resultat.length;i++){
-            System.out.println(resultat[i]);
-        }
+        String[] test= result.split("\\[\\[");
+        test = test[1].split("\\[");
 
 
+        String[] resultat;
+        for(int i = 0 ;i< test.length; i++){
+            resultat = test[i].split(",");
+            //resultat[0-16 sont a stocker]
+        }
 
         //    Vol vol = new ObjectMapper().readValue(result,Vol.class);
 
