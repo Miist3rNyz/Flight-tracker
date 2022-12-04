@@ -32,7 +32,7 @@
                 <a class="navbar-item">
                     Documentation
                 </a>
-                <a class="navbar-item" href = "../Vol">
+                <a class="navbar-item" href = "../Vol" th:if="${session.username !=null}">
                     Consulter les vols
                 </a>
 
@@ -61,7 +61,7 @@
 
     <p>
     <h1 class="title">Bienvenue sur notre site de consultation de vol</h1>
-    Sur ce site vous retrouverez les différentes informations sur les vols en cours et à venir. Pour cela veuillez vous inscrire ou vous connecter.<br>
+    Sur ce site vous retrouverez les différentes informations sur les vols en cours et à venir. Pour cela veuillez vous inscrire puis vous connecter. Si vous avez déjà un compte veuillez vous connecter<br>
 
     </p>
 

@@ -32,11 +32,11 @@ public class ApiController {
         this.volService=volService;
     }
     @GetMapping("/Vol")
-    public ModelAndView Vol(){
-        return new ModelAndView("redirect:/Vol");
+    public String Vol(){
+        return "Vol";
     }
 
-    @PostMapping( "/vol")
+    @PostMapping( "/Vol")
     private ModelAndView getVol() {
         String uri = "https://opensky-network.org/api/states/all";
         RestTemplate restTemplate = new RestTemplate();
