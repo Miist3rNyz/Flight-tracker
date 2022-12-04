@@ -7,13 +7,13 @@
     <title>Consultation des vols en cours</title>
 </head>
 <body>
-    <h1 class="title">Bienvenue sur notre site de consultation de vol</h1>
 
 
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+
+    <nav class="navbar" role="navigation" aria-label="main navigation" >
         <div class="navbar-brand">
-            <a class="navbar-item" href="/">
-                <img src="images/logo.png" width="112" height="28">
+            <a class="navbar-item" href="/home">
+                <img th:src="@{/resources/static/images/logo.png}" width="112" height="28">
             </a>
 
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -25,14 +25,14 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item"> <!--href="/static/index.html"-->
+                <a class="navbar-item" href ="/home"> <!--href="/static/index.html"-->
                     Accueil
                 </a>
 
                 <a class="navbar-item">
                     Documentation
                 </a>
-                <a class="navbar-item">
+                <a class="navbar-item" href = "../Vol">
                     Consulter les vols
                 </a>
 
@@ -47,8 +47,11 @@
                             <strong>S'inscrire</strong>
                         </a>
 
-                        <a class="button is-light" href="../Login">
+                        <a class="button is-light" href="../Login" th:if="${session.username ==null}">
                             Se connecter
+                        </a>
+                        <a class="button is-danger" href="../Deconnexion" th:if="${session.username !=null}">
+                            Déconnexion
                         </a>
                     </div>
                 </div>
@@ -56,6 +59,11 @@
         </div>
     </nav>
 
+    <p>
+    <h1 class="title">Bienvenue sur notre site de consultation de vol</h1>
+    Sur ce site vous retrouverez les différentes informations sur les vols en cours et à venir. Pour cela veuillez vous inscrire ou vous connecter.<br>
+
+    </p>
 
 
 <!--

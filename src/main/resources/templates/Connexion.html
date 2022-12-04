@@ -9,8 +9,8 @@
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-        <a class="navbar-item" href="/">
-            <img src="../static/images/logo.png" width="112" height="28">
+        <a class="navbar-item" href="/home">
+            <img th:src="@{/resources/static/images/logo.png}" width="112" height="28">
         </a>
 
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -22,7 +22,7 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-            <a class="navbar-item" href="/">
+            <a class="navbar-item" href="/home">
                 Accueil
             </a>
 
@@ -42,20 +42,23 @@
                     <a class="button is-primary" href="../Inscription"> <!-- ne fonctionne pas je ne sais pas pourquoi-->
                         <strong>S'inscrire</strong>
                     </a>
-                    <a class="button is-light" href="../Login"><!-- ne fonctionne pas je ne sais pas pourquoi-->
+                    <a class="button is-light" href="../Login" th:if="${session.username ==null}"><!-- ne fonctionne pas je ne sais pas pourquoi-->
                         Se connecter
                     </a>
+                    <a class="button is-danger" href="../Deconnexion" th:if="${session.username !=null}"><!-- ne fonctionne pas je ne sais pas pourquoi-->
+                    Déconnexion
+                </a>
                 </div>
             </div>
         </div>
     </div>
 </nav>
-<p><span>Bienvenue:</span> <div th:text="${session.username}"></div> !</p>
+
 
 
 <h1 class="subtitle"> Page de connexion : </h1>
 
-<div class="block">
+<div class="block" th:if="${session.username == null}">
 
     <div class="container">
         <form method="POST">
@@ -73,6 +76,10 @@
         </div>
         </form>
     </div>
+</div>
+<div class="block" th:if="${session.username != null}">
+    <p> Vous êtes déjà connecté en tant que <p th:text="${session.username}"></p> </p>
+
 </div>
 </body>
 </html>

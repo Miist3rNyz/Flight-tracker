@@ -28,6 +28,10 @@ public class AuthentificationController {
 
         return new ModelAndView("redirect:/");
     }
+
+    @GetMapping("/Deconnexion")
+    public ModelAndView Deconnexion(HttpSession httpSession){httpSession.invalidate();return new ModelAndView("redirect:/");}
+
     @GetMapping("/Login")
     public String Login(){
         return"Connexion";

@@ -7,6 +7,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.sun.source.doctree.SystemPropertyTree;
+import org.springframework.stereotype.Controller;
 import org.springframework.util.SystemPropertyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -20,7 +21,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collections;
 
-@RestController
+@Controller
 
 public class ApiController {
 
@@ -30,11 +31,12 @@ public class ApiController {
     public ApiController(VolService volService){
         this.volService=volService;
     }
-   /* @GetMapping("/vol")
-    public String Vol(){
-        return "Vol";
-    }*/
-    @GetMapping( "/vol")
+    @GetMapping("/Vol")
+    public ModelAndView Vol(){
+        return new ModelAndView("redirect:/Vol");
+    }
+
+    @PostMapping( "/vol")
     private ModelAndView getVol() {
         String uri = "https://opensky-network.org/api/states/all";
         RestTemplate restTemplate = new RestTemplate();
