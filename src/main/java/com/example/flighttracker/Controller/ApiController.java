@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.sun.source.doctree.SystemPropertyTree;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.SystemPropertyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -103,9 +104,12 @@ public class ApiController {
         }
         return new ModelAndView( "redirect:/");
     }
-    @GetMapping("/list")
-    private Iterable<Vol> list(){
-        return volService.list();
+    @GetMapping("/List")
+    private String list(Model model){
+        Iterable<Vol> listvol = volService.list();
+        model.addAttribute("vol", listvol);
+
+        return "List";
     }
 
 
