@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+          crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container special">
+    <h2 class="h2">Liste des vols</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+                <th>ICAO</th>
+                <th>callsign</th>
+                <th>Pays d'origine</th>
+                <th>time_position</th>
+                <th>dernier contact</th>
+                <th>longitude</th>
+                <th>latitude</th>
+                <th>baro_altitude</th>
+                <th>sur le sol</th>
+                <th>vitesse</th>
+                <th>true track</th>
+                <th>position verticale</th>
+                <th>capteurs</th>
+                <th>altitude geographique</th>
+                <th>sqwuak</th>
+                <th>spi</th>
+                <th>source position</th>
+
+
+
+
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="vol: ${vol}">
+                <td><span th:text="${vol.icao24}"> Numéro ICAO </span></td>
+                <td><span th:text="${vol.callsign}"> Pays d'origin </span></td>
+                <td><span th:text="${vol.origin_Country}"> Pays d'origin </span></td>
+                <td><span th:text="${vol.time_position}"> Pays d'origin </span></td>
+                <td><span th:text="${vol.last_contact}"> Pays d'origin </span></td>
+                <td><span th:text="${vol.longitude}"> Pays d'origin </span></td>
+                <td><span th:text="${vol.lattitude}"> Pays d'origin </span></td>
+                <td><span th:text="${vol.baro_altitude}"> Pays d'origin </span></td>
+                <td><span th:text="${vol.on_ground}"> Pays d'origin </span></td>
+                <td><span th:text="${vol.velocity}"> Pays d'origin </span></td>
+                <td><span th:text="${vol.true_track}"> Pays d'origin </span></td>
+                <td><span th:text="${vol.vertical_rate}"> Pays d'origin </span></td>
+                <td><span th:text="${vol.sensors}"> Pays d'origin </span></td>
+                <td><span th:text="${vol.geo_altitude}"> Pays d'origin </span></td>
+                <td><span th:text="${vol.sqwuak}"> Pays d'origin </span></td>
+                <td><span th:text="${vol.spi}"> Pays d'origin </span></td>
+                <td><span th:text="${vol.position_source}"> Pays d'origin </span></td>
+
+
+
+
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
+</body>
+</html>
