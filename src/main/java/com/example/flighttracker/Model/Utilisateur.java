@@ -12,7 +12,7 @@ public class Utilisateur {
     @Column(nullable = false, unique = true, length = 30)
     private String username;
 
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false)
     private String password;
     public Utilisateur(String username, String password){
         this.username=username;

@@ -40,7 +40,7 @@
             <div class="navbar-item">
                 <div class="buttons">
 
-                    <a class="button is-primary" href ="../Inscription"> <!-- ne fonctionne pas je ne sais pas pourquoi-->
+                    <a class="button is-primary" href ="../Inscription" th:if="${session.username ==null}"> <!-- ne fonctionne pas je ne sais pas pourquoi-->
                         <strong>S'inscrire</strong>
 
                     </a>

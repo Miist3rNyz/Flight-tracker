@@ -43,7 +43,7 @@
                 <div class="navbar-item">
                     <div class="buttons">
 
-                        <a class="button is-primary" href="../Inscription">
+                        <a class="button is-primary" href="../Inscription" th:if="${session.username ==null}">
                             <strong>S'inscrire</strong>
                         </a>
 
