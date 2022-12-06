@@ -25,9 +25,7 @@ public class VolService {
    public Iterable<Vol> list(){
        return Volrepo.findAll();
    }
-    public Iterable<Vol> save(List<Vol> users) {
-        return Volrepo.saveAll(users);
-    }
+
     public Vol save(Vol vol){return Volrepo.save(vol);}
 
 }

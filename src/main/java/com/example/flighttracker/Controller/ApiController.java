@@ -1,15 +1,19 @@
 package com.example.flighttracker.Controller;
 
 import com.example.flighttracker.Model.Vol;
+import com.example.flighttracker.Repo.RepertoireUtilisateur;
+import com.example.flighttracker.Repo.RepertoireVol;
 import com.example.flighttracker.Service.VolService;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
-
+import java.util.List;
 
 
 @Controller
@@ -19,12 +23,18 @@ public class ApiController {
     private String result;
 
     private final VolService volService;
-    public ApiController(VolService volService){
-        this.volService=volService;
+    private RepertoireVol volRepo;
+    public ApiController(VolService volService, RepertoireVol volRepo){
+        this.volService=volService;this.volRepo=volRepo;
     }
     @GetMapping("/Vol")
     public String Vol(){
         return "Vol";
+    }
+    @GetMapping("/Vol/call")
+    public ResponseEntity<List<Vol>> getVolByCallsign(@RequestParam String name) {
+        System.out.println(volRepo.findVolByCallsign(name).toString());
+        return new ResponseEntity<List<Vol>>(volRepo.findVolByCallsign(name), HttpStatus.OK);
     }
 
     @PostMapping( "/Vol")
@@ -65,9 +75,9 @@ public class ApiController {
             resultat = test[i].split(",");
             resultat[16]=resultat[16].substring(0,resultat[16].length()-1);
 
-            icao24[i]=resultat[0];
-            callsign[i]=resultat[1];
-            origin_Country[i]=resultat[2];
+            icao24[i]=resultat[0].substring(1,resultat[0].length()-1).trim();
+            callsign[i]=resultat[1].substring(1,resultat[1].length()-1).trim();
+            origin_Country[i]=resultat[2].substring(1,resultat[2].length()-1).trim();
             time_position[i]=resultat[3];
             last_contact[i]=resultat[4];
             longitude[i]=resultat[5];
@@ -79,7 +89,10 @@ public class ApiController {
             vertical_rate[i]=resultat[11];
             sensors[i]=resultat[12];
             geo_altitude[i]=resultat[13];
-            sqwuak[i]=resultat[14];
+            if (resultat[14].equals("null")){
+                sqwuak[i]=resultat[14];
+            }else{
+            sqwuak[i]=resultat[14].substring(1,resultat[14].length()-1).trim();}
             spi[i]=resultat[15];
             position_source[i]=resultat[16];
             if(i==test.length-1){
