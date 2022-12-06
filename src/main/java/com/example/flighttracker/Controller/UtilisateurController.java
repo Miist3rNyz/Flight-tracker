@@ -3,11 +3,11 @@ package com.example.flighttracker.Controller;
 import com.example.flighttracker.Service.UtilisateurService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.io.IOException;
 
 @Data
 @RestController
@@ -24,4 +24,5 @@ public class UtilisateurController {
     }
     @GetMapping("/home")
     public ModelAndView home(){return new ModelAndView("redirect:/");}
+
 }

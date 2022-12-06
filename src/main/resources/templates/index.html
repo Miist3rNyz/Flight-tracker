@@ -13,7 +13,7 @@
     <nav class="navbar" role="navigation" aria-label="main navigation" >
         <div class="navbar-brand">
             <a class="navbar-item" href="/home">
-                <img th:src="@{/resources/static/images/logo.png}" width="112" height="28">
+                <img th:src="@{/logo}" width="112" height="28">
             </a>
 
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -65,18 +65,17 @@
 
     </p>
 
-
 <!--
-    <section>
+ <section>
         <input id="searchbar"  type="text" name="search">
 
         <p1></Br> Ceci est un texte à la con pour tester des trucs </Br>Oui</Br>Oui</Br>Oui</p1>
     </section>
-
+-->
     <footer>
-        <img src="images/UL.png" width=20% height=20% id="UL">
+        <img th:src="@{/UL}" width=20% height=20% id="UL">
 
-    </footer> -->
+    </footer>
     <script
             src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </body>
