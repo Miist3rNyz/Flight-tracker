@@ -23,9 +23,9 @@ public class ApiController {
     private String result;
 
     private final VolService volService;
-    private RepertoireVol volRepo;
-    public ApiController(VolService volService, RepertoireVol volRepo){
-        this.volService=volService;this.volRepo=volRepo;
+
+    public ApiController(VolService volService){
+        this.volService=volService;
     }
     @GetMapping("/Vol")
     public String Vol(){
@@ -33,8 +33,8 @@ public class ApiController {
     }
     @GetMapping("/Vol/call")
     public ResponseEntity<List<Vol>> getVolByCallsign(@RequestParam String name) {
-        System.out.println(volRepo.findVolByCallsign(name).toString());
-        return new ResponseEntity<List<Vol>>(volRepo.findVolByCallsign(name), HttpStatus.OK);
+        System.out.println(volService.ListCallsign(name).toString());
+        return new ResponseEntity<List<Vol>>(volService.ListCallsign(name), HttpStatus.OK);
     }
 
     @PostMapping( "/Vol")

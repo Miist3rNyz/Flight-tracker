@@ -25,6 +25,7 @@ public class VolService {
    public Iterable<Vol> list(){
        return Volrepo.findAll();
    }
+   public List<Vol> ListCallsign(String name){return Volrepo.findVolByCallsign(name);}
 
     public Vol save(Vol vol){return Volrepo.save(vol);}
 

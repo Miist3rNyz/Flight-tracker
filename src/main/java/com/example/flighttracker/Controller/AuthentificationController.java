@@ -24,8 +24,6 @@ public class AuthentificationController {
     public ModelAndView SaveUtilisateur(@RequestParam("username")String username, @RequestParam("password")String password){
         service.SaveUtilisateur(username,password);
 
-
-
         return new ModelAndView("redirect:/");
     }
 
@@ -42,10 +40,8 @@ public class AuthentificationController {
             Utilisateur utilisateur = new Utilisateur(username,password);
             httpSession.setAttribute("username",utilisateur.getUsername());
 
-
-
         } else {        // il faut faire une redirection vers une page qui redemande le mot de passe ou le username en fonction de ce qui est faux.
-            return new ModelAndView("redirect:test");
+            return new ModelAndView("redirect:/Login");
         }
         return new ModelAndView("redirect:/");
     }
