@@ -10,7 +10,7 @@
 
 
 
-    <nav class="navbar" role="navigation" aria-label="main navigation" >
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation" >
         <div class="navbar-brand">
             <a class="navbar-item" href="/home">
                 <img th:src="@{/logo}" width="112" height="28">
@@ -43,7 +43,7 @@
                 <div class="navbar-item">
                     <div class="buttons">
 
-                        <a class="button is-primary" href="../Inscription" th:if="${session.username ==null}">
+                        <a class="button is-primary is-outlined is-inverted" href="../Inscription" th:if="${session.username ==null}">
                             <strong>S'inscrire</strong>
                         </a>
 
@@ -59,11 +59,15 @@
         </div>
     </nav>
 
-    <p>
-    <h1 class="title">Bienvenue sur notre site de consultation de vol</h1>
-    Sur ce site vous retrouverez les différentes informations sur les vols en cours et à venir. Pour cela veuillez vous inscrire puis vous connecter. Si vous avez déjà un compte veuillez vous connecter<br>
+    <h1 class="title has-text-centered m-3">Bienvenue sur notre site de consultation de vol</h1>
 
-    </p>
+    <div class="box mx-6">
+
+        <p class="m-3">
+        Sur ce site vous retrouverez les différentes informations sur les vols en cours et à venir. Pour cela veuillez vous inscrire puis vous connecter. Si vous avez déjà un compte veuillez vous connecter.<br>
+        Pour toute aide, veuillez vous référer à la documentation.
+        </p>
+    </div>
 
 <!--
  <section>

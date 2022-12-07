@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="/home">
             <img th:src="@{/logo}" width="112" height="28">
@@ -40,7 +40,7 @@
             <div class="navbar-item">
                 <div class="buttons">
 
-                    <a class="button is-primary" href ="../Inscription" th:if="${session.username ==null}"> <!-- ne fonctionne pas je ne sais pas pourquoi-->
+                    <a class="button is-primary is-outlined is-inverted" href ="../Inscription" th:if="${session.username ==null}"> <!-- ne fonctionne pas je ne sais pas pourquoi-->
                         <strong>S'inscrire</strong>
 
                     </a>
@@ -55,28 +55,35 @@
     </div>
 </nav>
 
-<h1 class="subtitle"> Bienvenue sur la page d'inscription veuillez entrer les différentes informations ci dessous afin de vous enregistrer sur notre site :</h1>
+<h1 class="subtitle has-text-centered m-3"> Bienvenue sur la page d'inscription veuillez entrer les différentes informations ci dessous afin de vous enregistrer sur notre site :</h1>
+
 
 <div class="block">
-    <form method="POST" >
-        <div class="container">
-        <div class="columns">
-            <div class="column">
+    <div class="box mx-6">
+        <form method="POST" >
+            <div class="container">
+            <div class="rows is-vcentered">
+                <div class="row">
 
-                <h1 class="title">Identifiant :</h1>
-                <input type="text" placeholder="Identifiant" name="username">
+                    <h1 class="title">Identifiant :</h1>
+                    <input type="text" class="input is-primary" placeholder="Identifiant" name="username">
+
+                </div>
+                <div class="row">
+
+                    <h1 class="title">Mot de passe :</h1>
+                    <input type="password" class="input is-primary" placeholder="Mot de passe" name="password">
+                </div>
+
+                <div class="row m-3">
+                    <button type="submit" class="button is-light">Créer</button>
+                </div>
+
 
             </div>
-            <div class="column">
-
-                <h1 class="title">Mot de passe :</h1>
-                <input type="password" placeholder="Mot de passe" name="password">
             </div>
-            <button type="submit" class="btn btn-primary">Créer</button>
-
-        </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
 </body>
 </html>
