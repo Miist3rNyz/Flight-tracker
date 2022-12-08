@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface RepertoireVol extends JpaRepository<Vol,String> {
     List<Vol> findVolByCallsign(String name);
+    List<Vol> findVolByOrigin(String name);
 }

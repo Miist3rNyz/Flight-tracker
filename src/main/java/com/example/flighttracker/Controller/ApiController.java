@@ -1,15 +1,14 @@
 package com.example.flighttracker.Controller;
 
 import com.example.flighttracker.Model.Vol;
-import com.example.flighttracker.Repo.RepertoireUtilisateur;
-import com.example.flighttracker.Repo.RepertoireVol;
-import com.example.flighttracker.Service.VolService;
 
+import com.example.flighttracker.Service.VolService;
+import org.apache.tomcat.util.json.JSONParser;
+import org.springframework.boot.json.JsonParser;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,7 +16,6 @@ import java.util.List;
 
 
 @Controller
-
 public class ApiController {
 
     private String result;
@@ -33,23 +31,34 @@ public class ApiController {
     }
     @GetMapping("/Vol/call")
     public ResponseEntity<List<Vol>> getVolByCallsign(@RequestParam String name) {
-        System.out.println(volService.ListCallsign(name).toString());
+        String value = volService.ListCallsign(name).toString();
+
+
         return new ResponseEntity<List<Vol>>(volService.ListCallsign(name), HttpStatus.OK);
+    }
+    @GetMapping("/Vol/cal")
+    public ResponseEntity<List<Vol>> getVolByOrigin(@RequestParam String name){
+        String data=volService.ListOrigin(name).toString();
+        System.out.println(data);
+        /*data=data.substring(1, data.length()-1).trim();
+        String[] value =data.split(",");
+        String[] resultat=new String[value.length];
+        for(int i = 0; i< value.length;i++) {
+            resultat= value[i].split(":");
+            System.out.println(resultat[0]+resultat[1]);
+        }
+        System.out.println(resultat[1].substring(1,resultat[1].length()-1));*/
+        return new ResponseEntity<List<Vol>>(volService.ListOrigin(name),HttpStatus.OK);
     }
 
     @PostMapping( "/Vol")
     private ModelAndView getVol() {
         String uri = "https://opensky-network.org/api/states/all";
         RestTemplate restTemplate = new RestTemplate();
-
-
-
         result= restTemplate.getForObject(uri, String.class);
 
         String[] test= result.split("\\[\\[");
         test = test[1].split("\\[");
-
-
 
         String[] resultat;
         String[] icao24=new String[test.length];
@@ -70,7 +79,7 @@ public class ApiController {
         String[] spi=new String[test.length];
         String[] position_source=new String[test.length];
 
-
+        volService.delete();
         for(int i = 0 ;i< test.length; i++){
             resultat = test[i].split(",");
             resultat[16]=resultat[16].substring(0,resultat[16].length()-1);

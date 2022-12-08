@@ -15,7 +15,7 @@ public class Vol {
     @Id
     private String icao24;
     private String callsign;
-    private String origin_Country;
+    private String origin;
     private String time_position;
     private String last_contact;
     private String longitude;
@@ -32,10 +32,10 @@ public class Vol {
     private String position_source;
 
 
-    public Vol(String icao24,String callsign, String origin_Country, String time_position, String last_contact, String longitude, String lattitude,String baro_altitude, String on_ground, String velocity, String true_track,String vertical_rate, String sensors, String geo_altitude, String sqwuak, String spi, String position_source) {
+    public Vol(String icao24,String callsign, String origin, String time_position, String last_contact, String longitude, String lattitude,String baro_altitude, String on_ground, String velocity, String true_track,String vertical_rate, String sensors, String geo_altitude, String sqwuak, String spi, String position_source) {
         this.icao24 = icao24;
         this.callsign=callsign;
-        this.origin_Country=origin_Country;
+        this.origin=origin;
         this.time_position=time_position;
         this.last_contact=last_contact;
         this.longitude=longitude;
@@ -169,12 +169,12 @@ public class Vol {
         this.time_position = time_position;
     }
 
-    public String getOrigin_Country() {
-        return origin_Country;
+    public String getOrigin() {
+        return origin;
     }
 
-    public void setOrigin_Country(String origin_Country) {
-        this.origin_Country = origin_Country;
+    public void setOrigin(String origin_Country) {
+        this.origin = origin_Country;
     }
 
     public String getCallsign() {
