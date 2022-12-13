@@ -14,6 +14,7 @@ public class Vol {
 
     @Id
     private String icao24;
+
     private String callsign;
     private String origin;
     private String time_position;
@@ -21,7 +22,7 @@ public class Vol {
     private String longitude;
     private String lattitude;
     private String baro_altitude;
-    private String on_ground;
+    private String ground;
     private String velocity;
     private String true_track;
     private String vertical_rate;
@@ -41,7 +42,7 @@ public class Vol {
         this.longitude=longitude;
         this.lattitude=lattitude;
         this.baro_altitude=baro_altitude;
-        this.on_ground=on_ground;
+        this.ground=on_ground;
         this.velocity=velocity;
         this.true_track=true_track;
         this.vertical_rate=vertical_rate;
@@ -122,11 +123,11 @@ public class Vol {
     }
 
     public String getOn_ground() {
-        return on_ground;
+        return ground;
     }
 
     public void setOn_ground(String on_ground) {
-        this.on_ground = on_ground;
+        this.ground = on_ground;
     }
 
     public String getBaro_altitude() {

@@ -28,6 +28,7 @@ public class VolService {
    public List<Vol> ListCallsign(String name){return Volrepo.findVolByCallsign(name);}
     public List<Vol> ListOrigin(String name){return Volrepo.findVolByOrigin(name);}
     public void delete(){Volrepo.deleteAll();}
+    public List<Vol> ListSol(String ground,String name){return Volrepo.findVolByGroundAndOrigin(ground,name);}
 
     public Vol save(Vol vol){return Volrepo.save(vol);}
 

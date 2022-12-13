@@ -50,6 +50,13 @@ public class ApiController {
         System.out.println(resultat[1].substring(1,resultat[1].length()-1));*/
         return new ResponseEntity<List<Vol>>(volService.ListOrigin(name),HttpStatus.OK);
     }
+    @GetMapping("Vol/sol")
+    public String getVolByOnground(@RequestParam String name,@RequestParam String ground, Model model){
+       Iterable<Vol> data=volService.ListSol(ground,name);
+
+        model.addAttribute("volsol",data);
+        return "Sol";
+    }
 
     @PostMapping( "/Vol")
     private ModelAndView getVol() {
@@ -106,14 +113,14 @@ public class ApiController {
             position_source[i]=resultat[16];
             if(i==test.length-1){
                 position_source[i]=position_source[i].substring(0,position_source[i].length()-2);
+
             }
-
-
-        }
-        for(int i=0; i<position_source.length;i++){
             Vol vol = new Vol(icao24[i],callsign[i],origin_Country[i],time_position[i],last_contact[i],longitude[i],lattitude[i],baro_altitude[i],on_ground[i],velocity[i],true_track[i],vertical_rate[i],sensors[i],geo_altitude[i],sqwuak[i],spi[i],position_source[i]);
             volService.save(vol);
+
+
         }
+
         return new ModelAndView( "redirect:/");
     }
     @GetMapping("/List")
