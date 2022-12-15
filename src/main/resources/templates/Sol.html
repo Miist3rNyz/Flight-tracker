@@ -10,6 +10,13 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
           crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+          integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+          crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+            integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+            crossorigin=""></script>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -43,28 +50,65 @@
 
             </tr>
             </thead>
+            <div id="map" style="height: 600px;"></div>
+            <script>
+                var map = L.map('map', {
+                    minZoom: 1,
+                    maxZoom: 15,
+                });
+                var cartodbAttribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
+
+                var positron = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', ).addTo(map);
+            </script>
             <tbody>
 
+
             <tr th:each="vol: ${volsol}">
-                <td><span th:text="${vol.icao24}"> Numéro ICAO </span></td>
-                <td><span th:text="${vol.callsign}"> Callsign </span></td>
-                <td><span th:text="${vol.origin}"> Pays d'origin </span></td>
-                <td><span th:text="${vol.time_position}"> Pays d'origin </span></td>
-                <td><span th:text="${vol.last_contact}"> Pays d'origin </span></td>
-                <td><span th:text="${vol.longitude}"> Pays d'origin </span></td>
-                <td><span th:text="${vol.lattitude}"> Pays d'origin </span></td>
-                <td><span th:text="${vol.baro_altitude}"> Pays d'origin </span></td>
-                <td><span th:text="${vol.ground}"> Pays d'origin </span></td>
-                <td><span th:text="${vol.velocity}"> Pays d'origin </span></td>
-                <td><span th:text="${vol.true_track}"> Pays d'origin </span></td>
-                <td><span th:text="${vol.vertical_rate}"> Pays d'origin </span></td>
-                <td><span th:text="${vol.sensors}"> Pays d'origin </span></td>
-                <td><span th:text="${vol.geo_altitude}"> Pays d'origin </span></td>
-                <td><span th:text="${vol.sqwuak}"> Pays d'origin </span></td>
-                <td><span th:text="${vol.spi}"> Pays d'origin </span></td>
-                <td><span th:text="${vol.position_source}"> Pays d'origin </span></td>
+                <td><span th:text="${vol.icao24}"></span></td>
+                <td><span th:text="${vol.callsign}"></span></td>
+                <td><span th:text="${vol.origin}"></span></td>
+                <td><span th:text="${vol.time_position}"></span></td>
+                <td><span th:text="${vol.last_contact}"></span></td>
+                <td><span th:text="${vol.longitude}"></span></td>
+                <td><span th:text="${vol.lattitude}"></span></td>
+                <td><span th:text="${vol.baro_altitude}"></span></td>
+                <td><span th:text="${vol.ground}"></span></td>
+                <td><span th:text="${vol.velocity}"></span></td>
+                <td><span th:text="${vol.true_track}"></span></td>
+                <td><span th:text="${vol.vertical_rate}"></span></td>
+                <td><span th:text="${vol.sensors}"></span></td>
+                <td><span th:text="${vol.geo_altitude}"></span></td>
+                <td><span th:text="${vol.sqwuak}"></span></td>
+                <td><span th:text="${vol.spi}"></span></td>
+                <td><span th:text="${vol.position_source}"></span></td>
+
+                <script th:inline="javascript">
+
+                    var lattitude=[[${vol.lattitude}]];
+                    var longitude=[[${vol.longitude}]];
 
 
+
+
+                    map.setView([0, 0], 0);
+                    var avionIcon = L.Icon.extend({
+                        options: {
+                            iconUrl: 'https://cdn-icons-png.flaticon.com/512/2819/2819824.png\n',
+                            iconSize:     [35, 35],
+                            shadowSize:   [50, 64],
+
+                            shadowAnchor: [4, 62],
+                            popupAnchor:  [-3, -76]
+                        }
+                    });
+
+                    var monavionIcon = new avionIcon()
+
+                    var marker = L.marker([lattitude, longitude],{icon: monavionIcon}).addTo(map);
+
+
+
+                </script>
 
 
 
@@ -72,6 +116,8 @@
             </tbody>
         </table>
     </div>
+
+
 
 </body>
 </html>

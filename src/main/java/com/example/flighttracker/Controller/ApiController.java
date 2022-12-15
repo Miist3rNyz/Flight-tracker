@@ -40,14 +40,7 @@ public class ApiController {
     public ResponseEntity<List<Vol>> getVolByOrigin(@RequestParam String name){
         String data=volService.ListOrigin(name).toString();
         System.out.println(data);
-        /*data=data.substring(1, data.length()-1).trim();
-        String[] value =data.split(",");
-        String[] resultat=new String[value.length];
-        for(int i = 0; i< value.length;i++) {
-            resultat= value[i].split(":");
-            System.out.println(resultat[0]+resultat[1]);
-        }
-        System.out.println(resultat[1].substring(1,resultat[1].length()-1));*/
+
         return new ResponseEntity<List<Vol>>(volService.ListOrigin(name),HttpStatus.OK);
     }
     @GetMapping("Vol/sol")
