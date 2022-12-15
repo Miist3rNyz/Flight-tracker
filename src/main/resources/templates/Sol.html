@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
           integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
           crossorigin=""/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
             integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
@@ -21,8 +22,56 @@
     <title>Title</title>
 </head>
 <body>
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation" >
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/home">
+            <img th:src="@{/logo}" width="112" height="28">
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item" href ="/home"> <!--href="/static/index.html"-->
+                Accueil
+            </a>
+
+            <a class="navbar-item">
+                Documentation
+            </a>
+            <a class="navbar-item" href = "../List" th:if="${session.username !=null}">
+                Consulter les vols
+            </a>
+
+
+        </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+
+                    <a class="button is-primary is-outlined is-inverted" href="../Inscription" th:if="${session.username ==null}">
+                        <strong>S'inscrire</strong>
+                    </a>
+
+                    <a class="button is-light" href="../Login" th:if="${session.username ==null}">
+                        Se connecter
+                    </a>
+                    <a class="button is-danger" href="../Deconnexion" th:if="${session.username !=null}">
+                        Déconnexion
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
 <div class="container special">
-    <h2 class="h2">Liste des vols recherchés </h2>
+    <h2 class="h2">Voici la liste des vols que vous avez recherché. Vous trouverez le descriptif de chaque vol dans le tableau en dessous de la map.</h2>
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>

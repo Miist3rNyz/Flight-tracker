@@ -44,8 +44,14 @@ public class ApiController {
         return new ResponseEntity<List<Vol>>(volService.ListOrigin(name),HttpStatus.OK);
     }
     @GetMapping("Vol/sol")
-    public String getVolByOnground(@RequestParam String name,@RequestParam String ground, Model model){
-       Iterable<Vol> data=volService.ListSol(ground,name);
+    public String volAuSol(Model model){
+        Iterable<Vol> vol =  volService.list();
+
+        model.addAttribute("listevol",vol);
+        return "Volsol";}
+    @PostMapping("Vol/sol")
+    public String getVolByOnground(@RequestParam String Origin,@RequestParam String ground, Model model){
+       Iterable<Vol> data=volService.ListSol(ground,Origin);
 
         model.addAttribute("volsol",data);
         return "Sol";
