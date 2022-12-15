@@ -55,7 +55,7 @@
   </div>
 </nav>
 <span>Bienvenue sur la page qui va vous permettre de consulter les vols en choisissant si vous voulez qu'ils soient au sol et la provenance de l'avion (pays d'origine).</span>
-<div class="block" th:if="${session.username == null}">
+<div class="block" th:if="${session.username !=null}">
   <div class="box mx-6" >
     <div class="container">
       <form method="POST">
@@ -150,30 +150,25 @@
             <option value="Bahrain">Bahreïn</option>
             <option value="Brunei Darussalam">Brunéi Darussalam</option>
             <option value="United Arab Emirates">Émirats arabes unis</option>
-            <option value="Bahrain">Bahreïn</option>
-            <option value="Bahrain">Bahreïn</option>
-            <option value="Bahrain">Bahreïn</option>
-            <option value="Bahrain">Bahreïn</option>
-            <option value="Bahrain">Bahreïn</option>
-            <option value="Bahrain">Bahreïn</option>
-            <option value="Bahrain">Bahreïn</option>
-
-
-
-
-
-
-
-
-
-
-
-
+            <option value="Taiwan">Taïwan</option>
+            <option value="United States">USA</option>
+            <option value="Indonesia">Indonésie</option>
+            <option value="Canada">Canada</option>
+            <option value="New Zealand">Nouvelle Zélande</option>
+            <option value="Argentina">Argentine</option>
+            <option value="Chile">Chili</option>
+            <option value="Brazil">Brésil</option>
+            <option value="Brazil">Brésil</option>
+            <option value="Brazil">Brésil</option>
+            <option value="Brazil">Brésil</option>
+            <option value="Brazil">Brésil</option>
+            <option value="Brazil">Brésil</option>
+            <option value="Brazil">Brésil</option>
 
           </select>
           </div>
           <div class="row">
-          <label for="sur le sol">Veuillez choisir si vous voulez que l'avion soit sur le sol ou pas</label>
+          <label for="sur le sol">Veuillez choisir si vous désirez que l'avion soit sur le sol ou pas</label>
 
           <select name="ground" id="sur le sol">
             <option value="">Veuillez choisir une option</option>
