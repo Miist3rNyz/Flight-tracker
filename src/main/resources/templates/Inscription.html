@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation" >
     <div class="navbar-brand">
         <a class="navbar-item" href="/home">
             <img th:src="@{/logo}" width="112" height="28">
@@ -22,16 +22,34 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-            <a class="navbar-item" href="/home">
+            <a class="navbar-item" href ="/home">
                 Accueil
             </a>
 
             <a class="navbar-item">
                 Documentation
             </a>
-            <a class="navbar-item" th:if="${session.username !=null}">
-                Consulter les vols
-            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    Consulter les vols
+                </a>
+
+                <div class="navbar-dropdown">
+                    <a class="navbar-item" href="../List">
+                        Consulter tout les vols
+                    </a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item" href ="../Vol/call">
+                        Rechercher vol par Callsign
+                    </a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item" href="../Vol/sol">
+                        Rechercher vol au sol et par pays d'origine
+                    </a>
+
+
+                </div>
+            </div>
 
 
         </div>
@@ -40,14 +58,15 @@
             <div class="navbar-item">
                 <div class="buttons">
 
-                    <a class="button is-primary is-outlined is-inverted" href ="../Inscription" th:if="${session.username ==null}"> <!-- ne fonctionne pas je ne sais pas pourquoi-->
+                    <a class="button is-primary is-outlined is-inverted" href="../Inscription" th:if="${session.username ==null}">
                         <strong>S'inscrire</strong>
-
                     </a>
 
-
-                    <a class="button is-light" href="../Login"><!-- ne fonctionne pas je ne sais pas pourquoi-->
+                    <a class="button is-light" href="../Login" th:if="${session.username ==null}">
                         Se connecter
+                    </a>
+                    <a class="button is-danger" href="../Deconnexion" th:if="${session.username !=null}">
+                        Déconnexion
                     </a>
                 </div>
             </div>
