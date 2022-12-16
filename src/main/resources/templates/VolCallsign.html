@@ -28,7 +28,7 @@
       <a class="navbar-item">
         Documentation
       </a>
-      <div class="navbar-item has-dropdown is-hoverable">
+      <div class="navbar-item has-dropdown is-hoverable" th:if="${session.username !=null}">
         <a class="navbar-link">
           Consulter les vols
         </a>
