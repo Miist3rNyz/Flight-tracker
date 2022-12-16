@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+        crossorigin=""/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+          integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+          crossorigin=""></script>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation" >
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/home">
+      <img th:src="@{/logo}" width="112" height="28">
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href ="/home"> <!--href="/static/index.html"-->
+        Accueil
+      </a>
+
+      <a class="navbar-item">
+        Documentation
+      </a>
+      <a class="navbar-item" href = "../List" th:if="${session.username !=null}">
+        Consulter les vols
+      </a>
+
+
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+
+          <a class="button is-primary is-outlined is-inverted" href="../Inscription" th:if="${session.username ==null}">
+            <strong>S'inscrire</strong>
+          </a>
+
+          <a class="button is-light" href="../Login" th:if="${session.username ==null}">
+            Se connecter
+          </a>
+          <a class="button is-danger" href="../Deconnexion" th:if="${session.username !=null}">
+            Déconnexion
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="container special">
+  <h2 class="h2">Voici la liste des vols que vous avez recherché. Vous trouverez le descriptif de chaque vol dans le tableau en dessous de la map.</h2>
+  <div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+      <tr>
+        <th>ICAO</th>
+        <th>callsign</th>
+        <th>Pays d'origine</th>
+        <th>time_position</th>
+        <th>dernier contact</th>
+        <th>longitude</th>
+        <th>latitude</th>
+        <th>baro_altitude</th>
+        <th>sur le sol</th>
+        <th>vitesse</th>
+        <th>true track</th>
+        <th>position verticale</th>
+        <th>capteurs</th>
+        <th>altitude geographique</th>
+        <th>sqwuak</th>
+        <th>spi</th>
+        <th>source position</th>
+
+
+
+
+      </tr>
+      </thead>
+      <div id="map" style="height: 600px;"></div>
+      <script>
+        var map = L.map('map', {
+          minZoom: 1,
+          maxZoom: 15,
+        });
+        var cartodbAttribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
+
+        var positron = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', ).addTo(map);
+      </script>
+      <tbody>
+
+
+      <tr th:each="vol: ${listcallsign}">
+        <td><span th:text="${vol.icao24}"></span></td>
+        <td><span th:text="${vol.callsign}"></span></td>
+        <td><span th:text="${vol.origin}"></span></td>
+        <td><span th:text="${vol.time_position}"></span></td>
+        <td><span th:text="${vol.last_contact}"></span></td>
+        <td><span th:text="${vol.longitude}"></span></td>
+        <td><span th:text="${vol.lattitude}"></span></td>
+        <td><span th:text="${vol.baro_altitude}"></span></td>
+        <td><span th:text="${vol.ground}"></span></td>
+        <td><span th:text="${vol.velocity}"></span></td>
+        <td><span th:text="${vol.true_track}"></span></td>
+        <td><span th:text="${vol.vertical_rate}"></span></td>
+        <td><span th:text="${vol.sensors}"></span></td>
+        <td><span th:text="${vol.geo_altitude}"></span></td>
+        <td><span th:text="${vol.sqwuak}"></span></td>
+        <td><span th:text="${vol.spi}"></span></td>
+        <td><span th:text="${vol.position_source}"></span></td>
+
+        <script th:inline="javascript">
+
+          var lattitude=[[${vol.lattitude}]];
+          var longitude=[[${vol.longitude}]];
+
+
+
+
+          map.setView([0, 0], 0);
+          var avionIcon = L.Icon.extend({
+            options: {
+              iconUrl: 'https://cdn-icons-png.flaticon.com/512/2819/2819824.png\n',
+              iconSize:     [35, 35],
+              shadowSize:   [50, 64],
+
+              shadowAnchor: [4, 62],
+              popupAnchor:  [-3, -76]
+            }
+          });
+
+          var monavionIcon = new avionIcon()
+
+          var marker = L.marker([lattitude, longitude],{icon: monavionIcon}).addTo(map);
+
+
+
+        </script>
+
+
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+</body>
+</html>

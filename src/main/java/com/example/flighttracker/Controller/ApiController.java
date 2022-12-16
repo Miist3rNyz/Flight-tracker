@@ -30,11 +30,16 @@ public class ApiController {
         return "Vol";
     }
     @GetMapping("/Vol/call")
-    public ResponseEntity<List<Vol>> getVolByCallsign(@RequestParam String name) {
-        String value = volService.ListCallsign(name).toString();
-
-
-        return new ResponseEntity<List<Vol>>(volService.ListCallsign(name), HttpStatus.OK);
+    public String volCallsign(Model model){
+        Iterable<Vol> vol = volService.list();
+        model.addAttribute("listecallsign",vol);
+        return "VolCallsign";
+    }
+    @PostMapping("/Vol/call")
+    public String getVolByCallsign(@RequestParam String callsign,Model model) {
+        Iterable<Vol> value = volService.ListCallsign(callsign);
+        model.addAttribute("listcallsign",value);
+        return "Callsign";
     }
     @GetMapping("/Vol/cal")
     public ResponseEntity<List<Vol>> getVolByOrigin(@RequestParam String name){

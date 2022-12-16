@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Consultation des vols au sol</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+<body>
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation" >
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/home">
+      <img th:src="@{/logo}" width="112" height="28">
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href ="/home"> <!--href="/static/index.html"-->
+        Accueil
+      </a>
+
+      <a class="navbar-item">
+        Documentation
+      </a>
+      <a class="navbar-item" href = "../List" th:if="${session.username !=null}">
+        Consulter les vols
+      </a>
+
+
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+
+          <a class="button is-primary is-outlined is-inverted" href="../Inscription" th:if="${session.username ==null}">
+            <strong>S'inscrire</strong>
+          </a>
+
+          <a class="button is-light" href="../Login" th:if="${session.username ==null}">
+            Se connecter
+          </a>
+          <a class="button is-danger" href="../Deconnexion" th:if="${session.username !=null}">
+            Déconnexion
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<span>Bienvenue sur la page qui va vous permettre de consulter les vols en choisissant le callsign de l'avion désirer.</span>
+<div class="block" th:if="${session.username !=null}">
+  <div class="box mx-6" >
+    <div class="container">
+      <form method="POST">
+        <div class="rows is-vcentered">
+          <div class="row">
+            <label for="Callsign">Choisissez un Callsign</label>
+
+            <select name="callsign" id="Callsign" >
+              <option value="">Veuillez choisir une option</option>
+              <option th:each="vol :${listecallsign}" th:value="${vol.callsign}" th:text="${vol.callsign}")></option>-->
+            </select>
+          </div>
+
+          <div class="row m-3">
+            <button type="submit" class="button is-light">Rechercher</button>
+          </div>
+        </div>
+
+      </form>
+</body>
+</html>
