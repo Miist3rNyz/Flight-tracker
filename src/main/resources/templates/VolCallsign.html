@@ -72,22 +72,24 @@
     </div>
   </div>
 </nav>
-<span>Bienvenue sur la page qui va vous permettre de consulter les vols en choisissant le callsign de l'avion désirer.</span>
+<h1 class="subtitle mx-6 my-3">Bienvenue sur la page qui va vous permettre de consulter les vols en choisissant le callsign de l'avion désiré.</h1>
 <div class="block" th:if="${session.username !=null}">
-  <div class="box mx-6" >
+  <div class="box mx-6 my-3" >
     <div class="container">
       <form method="POST">
         <div class="rows is-vcentered">
           <div class="row">
-            <label for="Callsign">Choisissez un Callsign</label>
-
+            <label for="Callsign">Choisissez un Callsign :</label>
+          </div>
+          <div class="row select is-primary my-2">
             <select name="callsign" id="Callsign" >
               <option value="">Veuillez choisir une option</option>
               <option th:each="vol :${listecallsign}" th:value="${vol.callsign}" th:text="${vol.callsign}")></option>-->
             </select>
+
           </div>
 
-          <div class="row m-3">
+          <div class="row my-2">
             <button type="submit" class="button is-light">Rechercher</button>
           </div>
         </div>

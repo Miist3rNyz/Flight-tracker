@@ -73,9 +73,20 @@
     </div>
 </nav>
 
-<h1> Veuillez attendre pendant le chargement de la base de données, nous sommes désolés celle-ci est assez imposante afin de répondre à vos besoins. Pendant ce temps n'hésitez pas à aller chercher un petit café ! </h1>
-<form method="POST" th:if="${session.username !=null}">
-<button type="submit" class="btn btn-primary">Charger la base de données</button>
-</form>
+<div class="container">
+    <div class="rows box mx-6 mt-3">
+        <div class="row m-3 notification is-primary">
+            <h1> <strong>Veuillez attendre pendant le chargement de la base de données</strong>, nous sommes désolés celle-ci est assez imposante afin de répondre à vos besoins. Pendant ce temps n'hésitez pas à aller chercher un petit café ! </h1>
+        </div>
+        <div class="row m-3">
+            <progress class="progress is-small is-primary " max="100">15%</progress>
+        </div>
+        <div class="row">
+            <form method="POST" th:if="${session.username !=null}">
+            <button type="submit" class="btn btn-primary">Charger la base de données</button>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -72,15 +72,16 @@
     </div>
   </div>
 </nav>
-<span>Bienvenue sur la page qui va vous permettre de consulter les vols en choisissant si vous voulez qu'ils soient au sol et la provenance de l'avion (pays d'origine).</span>
+<h1 class="subtitle mx-6 my-3">Bienvenue sur la page qui va vous permettre de consulter les vols en choisissant si vous voulez qu'ils soient au sol et la provenance de l'avion (pays d'origine).</h1>
 <div class="block" th:if="${session.username !=null}">
   <div class="box mx-6" >
     <div class="container">
       <form method="POST">
         <div class="rows is-vcentered">
           <div class="row">
-          <label for="Pays d'origine">Choisissez un pays d'origine</label>
-
+          <label for="Pays d'origine">Choisissez un pays d'origine :</label>
+          </div>
+          <div class="row select is-primary my-2">
           <select name="Origin" id="Pays d'origine" >
             <option value="">Veuillez choisir une option</option>
            <!-- <option th:each="vol :${listevol}" th:value="${vol.origin}" th:text="${vol.origin}")></option>-->
@@ -185,16 +186,18 @@
 
           </select>
           </div>
-          <div class="row">
-          <label for="sur le sol">Veuillez choisir si vous désirez que l'avion soit sur le sol ou pas</label>
 
+          <div class="row">
+          <label for="sur le sol">Veuillez choisir si vous désirez que l'avion soit sur le sol ou non : </label>
+          </div>
+          <div class="row select is-primary my-2">
           <select name="ground" id="sur le sol">
             <option value="">Veuillez choisir une option</option>
             <option value="true">Oui</option>
             <option value="false">Non</option>
           </select>
           </div>
-          <div class="row m-3">
+          <div class="row my-2">
             <button type="submit" class="button is-light">Rechercher</button>
           </div>
         </div>
