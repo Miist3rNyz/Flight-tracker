@@ -28,9 +28,7 @@
                     Accueil
                 </a>
 
-                <a class="navbar-item">
-                    Documentation
-                </a>
+
                 <div class="navbar-item has-dropdown is-hoverable" th:if="${session.username !=null}">
                     <a class="navbar-link">
                         Consulter les vols
@@ -81,21 +79,56 @@
     <div class="box mx-6">
 
         <p class="m-3">
-        Sur ce site vous retrouverez les différentes informations sur les vols en cours et à venir. Pour cela veuillez vous inscrire puis vous connecter. Si vous avez déjà un compte veuillez vous connecter.<br>
-        Pour toute aide, veuillez vous référer à la documentation.
+            Sur ce site vous retrouverez les différentes informations sur les vols <strong>en cours et à venir.</strong> Pour cela veuillez vous inscrire puis vous connecter. Si vous avez déjà un compte veuillez vous connecter.
         </p>
     </div>
 
-<!--
- <section>
-        <input id="searchbar"  type="text" name="search">
+    <div class="box mx-6 my-3">
+        <p class="m-3">
+            Afin de consulter des vols, veuillez accéder à la rubrique <strong>"Consulter les vols".</strong>
+        </p>
+        <p class="m-3">
+            Vous aurez alors le choix entre : <br>
+            <span class="icon-text">
+                 <span class="icon">
+                     <i class="fas fa-plane-departure"></i>
+                </span>
+                <span>Consulter tous les vols.</span>
+            </span>
+            <br>
+            <span class="icon-text">
+                <span class="icon">
+                    <i class="fas fa-info-circle"></i>
+                </span>
+                <span>Rechercher des vols à l'aide de leur Callsign.</span>
+            </span>
+            <br>
+            <span class="icon-text">
+                <span class="icon">
+                    <i class="fas fa-flag-checkered"></i>
+                </span>
+            <span>Rechercher des vols à l'aide de leur pays d'origine, encore au sol ou non.</span>
+            </span>
+        </p>
+    </div>
 
-        <p1></Br> Ceci est un texte à la con pour tester des trucs </Br>Oui</Br>Oui</Br>Oui</p1>
-    </section>
--->
+
     <footer>
-        <img th:src="@{/UL}" width=20% height=20% id="UL">
+        <div class="columns">
+            <div class="column">
+                <div class="box ml-6">
+                    <p> Ce site vous est proposé dans le cadre d'un projet de 4ème année par les étudiants suivants : <br>
+                        KESTELOOT Kevin <br> ESCHENBRUMER Brice <br> GRANDJANIN Tom
+                    </p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="box mr-6">
+                    <img th:src="@{/UL}" width=20% height=20% id="UL">
+                </div>
+            </div>
 
+        </div>
     </footer>
     <script
             src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
