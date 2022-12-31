@@ -67,7 +67,7 @@
                             Se connecter
                         </a>
 
-                        <a >Bienvenu : </a>
+
                         <a class="navbar-item" th:if="${session.username !=null}" th:text="${session.username}" href="../profil">
                         </a>
                         <a class="button is-danger" href="../Deconnexion" th:if="${session.username !=null}">
